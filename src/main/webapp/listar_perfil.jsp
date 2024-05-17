@@ -17,7 +17,15 @@
 	href="bootstrap-3.3.7/dist/bootstrap-theme.min.css" />
 <link rel="stylesheet" href="DataTables/datatables.min.css" />
 
-<title>Insert title here</title>
+<title>JSP PAGE</title>
+<script type="text/javascript">
+  function confirmarExclusao(id,nome) {
+	  if(confirm('Deseja realmente excluir o perfil '+nome+' ?')) {
+		  location.href='gerenciar_perfil.do?acao=deletar&idPerfil='+id;
+	  }
+  }
+
+</script>
 </head>
 <body>
 	<div class="container">
@@ -50,10 +58,10 @@
 				<tr>
 					<td>${p.idPerfil}</td>
 					<td>${p.nome}</td>
-					<td><a class="btn btn-primary" href="#"> <i
-							class="glyphicon glyphicon-pencil"></i>
+					<td><a class="btn btn-primary" href="gerenciar_perfil.do?acao=alterar&idPerfil=${p.idPerfil}"> 
+							<i class="glyphicon glyphicon-pencil"></i>
 					</a>
-						<button class="btn-danger">
+						<button class="btn-danger" onclick="confirmarExclusao(${p.idPerfil},'${p.nome}')">
 							<i class="glyphicon glyphicon-trash"></i>
 						</button></td>
 				</tr>
