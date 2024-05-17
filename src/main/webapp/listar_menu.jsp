@@ -1,5 +1,5 @@
-<%@page import="model.PerfilDAO"%>
-<%@page import="model.Perfil"%>
+
+<%@page import="model.MenuDAO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="jakarta.servlet.jsp.tagext.TryCatchFinally"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -20,8 +20,8 @@
 <title>JSP PAGE</title>
 <script type="text/javascript">
   function confirmarExclusao(id,nome) {
-	  if(confirm('Deseja realmente excluir o perfil '+nome+' ?')) {
-		  location.href='gerenciar_perfil.do?acao=deletar&idPerfil='+id;
+	  if(confirm('Deseja realmente excluir o menu '+nome+' ?')) {
+		  location.href='gerenciar_menu.do?acao=deletar&idMenu='+id;
 	  }
   }
 
@@ -31,37 +31,57 @@
 	<div class="container">
 		<%@include file="banner.jsp"%>
 		<%@include file="menu.jsp"%>
-		<h1>Lista de Perfis</h1>
+		<h1>Lista de Menus</h1>
 
-		<a href="form_perfil.jsp" class="btn btn-primary">Novo Cadastro</a>
+		<a href="form_menu.jsp" class="btn btn-primary">Novo Cadastro</a>
 
 		<table class="table table-hover table-striped table-bordered display"
-			id="listarPerfil">
+			id="listarMenu">
 			<thead>
 			<tr>
 				<th>ID</th>
-				<th>Nome Perfil</th>
+				<th>Nome Menu</th>
+				<th>Link</th>
+				<th>Icone</th>
+				<th>Exibir</th>
 				<th>Opções</th>
 			</tr>
 			</thead>
 			<tfoot>
 			<tr>
 				<th>ID</th>
-				<th>Nome Perfil</th>
+				<th>Nome Menu</th>
+				<th>Link</th>
+				<th>Icone</th>
+				<th>Exibir</th>
 				<th>Opções</th>
 			</tr>
 			</tfoot>
-			<jsp:useBean class="model.PerfilDAO" id="pDAO"></jsp:useBean>
+			
+			
+			<jsp:useBean class="model.MenuDAO" id="mDAO"></jsp:useBean>
+			
+			
 			<tbody>
-			<c:forEach var="p" items="${pDAO.lista}">
+			<c:forEach var="m" items="${mDAO.lista}">
 
 				<tr>
-					<td>${p.idPerfil}</td>
-					<td>${p.nome}</td>
-					<td><a class="btn btn-primary" href="gerenciar_perfil.do?acao=alterar&idPerfil=${p.idPerfil}"> 
+					<td>${m.idMenu}</td>
+					<td>${m.nome}</td>
+					<td>${m.link}</td>
+					<td>${m.icone}</td>
+					<td>
+					 <c:if test="${m.exibir==1 }" >
+					  Sim
+					 </c:if>
+					  <c:if test="${m.exibir==2 }" >
+					  Nao
+					 </c:if> 
+					</td>
+					<td><a class="btn btn-primary" href="gerenciar_menu.do?acao=alterar&idMenu=${m.idMenu}"> 
 							<i class="glyphicon glyphicon-pencil"></i>
 					</a>
-						<button class="btn-danger" onclick="confirmarExclusao(${p.idPerfil},'${p.nome}')">
+						<button class="btn-danger" onclick="confirmarExclusao(${m.idMenu},'${m.nome}')">
 							<i class="glyphicon glyphicon-trash"></i>
 						</button></td>
 				</tr>
