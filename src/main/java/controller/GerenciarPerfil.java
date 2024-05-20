@@ -31,11 +31,13 @@ public class GerenciarPerfil extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		String mensagem ="";
 		
 		String acao = request.getParameter("acao");
 		String idPerfil = request.getParameter("idPerfil");
+		
 		
 		Perfil p = new Perfil();
 		
@@ -66,10 +68,14 @@ public class GerenciarPerfil extends HttpServlet {
 			mensagem = "Erro ao executar";
 		}
 		
+		out.println("<html>");
+		out.println("<body>");
 		out.println("<script type='text/javascript'>");
 	    out.println("alert('"+mensagem+"');");
 	    out.println("location.href='listar_perfil.jsp';");
 	    out.println("</script>");
+	    out.println("</body>");
+	    out.println("</html>");
 		
 		
 		

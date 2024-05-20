@@ -32,7 +32,10 @@ public class GerenciarMenu extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
+		
+		
 		String mensagem ="";
 		
 		String acao = request.getParameter("acao");
@@ -66,19 +69,59 @@ public class GerenciarMenu extends HttpServlet {
 			out.print(e);
 			mensagem = "Erro ao executar";
 		}
-		
+		out.println("<html>");
+		out.println("<body>");
 		out.println("<script type='text/javascript'>");
 	    out.println("alert('"+mensagem+"');");
 	    out.println("location.href='listar_menu.jsp';");
 	    out.println("</script>");
+	    out.println("</body>");
+	    out.println("</html>");
+	    
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		   PrintWriter out = response.getWriter();
+	       String idMenu = request.getParameter("idMenu");
+	       String nome = request.getParameter("nome");
+	       String link = request.getParameter("link");
+	       String icone = request.getParameter("icone");
+	       String exibir = request.getParameter("exibir");
+	       
+	       String mensagem="";
+	       
+	       Menu m = new Menu();
+	       try {
+	    	   MenuDAO mDAO = new MenuDAO();
+	    	   if (!idMenu.isEmpty()) {
+	    		   m.setIdMenu(Integer.parseInt(idMenu));
+	    	   }
+	    	   if (nome.equals("") || nome.isEmpty() || link.equals("")| exibir.equals("")) {
+	    		   mensagem = "Campos obrigatórios deverão ser preenchidos";
+	    	   } else {
+	    		   m.setNome(nome);
+	    		   m.setLink(link);
+	    		   m.setIcone(icone);
+	    		   m.setExibir(Integer.parseInt(exibir));
+	    		   if (mDAO.gravar(m)) {
+	    			   mensagem = "Gravado com sucesso";
+	    		   } else {
+	    			   mensagem = "Erro ao gravar no banco de dados";
+	    		   }
+	    	   }
+		} catch (Exception e) {
+			out.print(e);
+			mensagem="Erro ao executoar";
+		}
+	    out.println("<script type='text/javascript'>");
+	    out.println("alert('"+mensagem+"');");
+	    out.println("location.href='listar_menu.jsp';");
+	    out.println("</script>");
+	       
 	}
 
 }

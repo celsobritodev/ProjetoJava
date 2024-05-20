@@ -31,7 +31,7 @@
 	<div class="container">
 		<%@include file="banner.jsp"%>
 		<%@include file="menu.jsp"%>
-		<h1>Lista de Perfis</h1>
+		<h1>Listar os Perfis</h1>
 
 		<a href="form_perfil.jsp" class="btn btn-primary">Listar Perfil</a>
 

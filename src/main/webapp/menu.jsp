@@ -3,7 +3,7 @@
 		<li><a href="#"> Inicio</a></li>
 		<li><a href="listar_perfil.jsp"> Perfis</a></li>
 		<li><a href="listar_menu.jsp"> Menus</a></li>
-		<li><a href="#"> Usuários</a></li>
+		<li><a href="listar_usuario.jsp"> Usuários</a></li>
 	</ul>
 </div>
 
