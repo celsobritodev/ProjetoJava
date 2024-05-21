@@ -21,7 +21,7 @@
 
 <script type="text/javascript">
   function confirmarExclusao(id,nome) {
-	  if(confirm('Deseja realmente excluir o usuario '+nome+' ?')) {
+	  if(confirm('Deseja realmente desativar o usuario '+nome+' ?')) {
 		  location.href='gerenciar_usuario.do?acao=deletar&idUsuario='+id;
 	  }
   }
@@ -82,10 +82,10 @@
 					
 					<td>${u.perfil.nome}</td>
 					
-					<td><a class="btn btn-primary" href="gerenciar_usuario.do?acao=alterar&idUsuario=${m.idUsuario}"> 
+					<td><a class="btn btn-primary" href="gerenciar_usuario.do?acao=alterar&idUsuario=${u.idUsuario}"> 
 							<i class="glyphicon glyphicon-pencil"></i>
 					</a>
-						<button class="btn-danger" onclick="confirmarExclusao(${m.idUsuario},'${u.nome}')">
+						<button class="btn-danger" onclick="confirmarExclusao(${u.idUsuario},'${u.nome}')">
 							<i class="glyphicon glyphicon-trash"></i>
 						</button></td>
 				</tr>
