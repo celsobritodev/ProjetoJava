@@ -33,7 +33,7 @@
 		<%@include file="menu.jsp"%>
 		<h1>Listar os Perfis</h1>
 
-		<a href="form_perfil.jsp" class="btn btn-primary">Listar Perfil</a>
+		<a href="form_perfil.jsp" class="btn btn-primary">Novo Perfil</a>
 
 		<table class="table table-hover table-striped table-bordered display"
 			id="listarPerfil">
@@ -63,7 +63,11 @@
 					</a>
 						<button class="btn-danger" onclick="confirmarExclusao(${p.idPerfil},'${p.nome}')">
 							<i class="glyphicon glyphicon-trash"></i>
-						</button></td>
+						</button>
+						<a class="btn btn-default" href="gerenciar_menu_perfil.do?acao=gerenciar&idPerfil=${p.idPerfil }">
+						 <i class="glyphicon">Acessos</i>
+						</a> 
+					</td>
 				</tr>
 
 			</c:forEach>

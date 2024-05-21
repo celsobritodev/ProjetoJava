@@ -69,6 +69,9 @@ public class PerfilDAO extends DataBaseDAO {
 		if( rs.next()) {
 			p.setIdPerfil(rs.getInt("idPerfil"));
 			p.setNome(rs.getString("nome"));
+			p.setMenus(menusVinculadosPorPerfil(idPerfil));
+			p.setMenus(menusNaoVinculadosPorPerfil(idPerfil));
+			
 		}
 		this.desconectar();
 		return p;
@@ -91,5 +94,74 @@ public class PerfilDAO extends DataBaseDAO {
 	       return false;
 		}
 	}
+	
+	
+	public ArrayList<Menu> menusVinculadosPorPerfil(int idPerfil) throws Exception {
+	 
+		ArrayList<Menu> lista = new ArrayList<Menu> ();
+		String sql = "SELECT m.* FROM menu_perfil AS mp, menu AS m "+
+		" WHERE mp.idMenu = m.idMenu AND mp.idPerfil=?";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, idPerfil);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+        	Menu m = new Menu();
+        	m.setIdMenu(rs.getInt("m.idMenu"));
+        	m.setNome(rs.getString("m.nome"));
+        	m.setLink(rs.getString("link"));
+        	m.setIcone(rs.getString("icone"));
+        	m.setExibir(rs.getInt("exibir"));
+        	lista.add(m);
+        }
+	    this.desconectar();
+	    return lista;
+	
+	}
+	
+	
+	public ArrayList<Menu> menusNaoVinculadosPorPerfil(int idPerfil) throws Exception {
+		 
+		ArrayList<Menu> lista = new ArrayList<Menu> ();
+		String sql = "SELECT m.* FROM menu AS m "+
+		" WHERE m.idMenu NOT IN (SELECT mp.idMenu FROM menu_perfil AS mp WHERE mp.idPerfil=?)";
+        this.conectar();
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setInt(1, idPerfil);
+        ResultSet rs = pstm.executeQuery();
+        while (rs.next()) {
+        	Menu m = new Menu();
+        	m.setIdMenu(rs.getInt("m.idMenu"));
+        	m.setNome(rs.getString("m.nome"));
+        	m.setLink(rs.getString("link"));
+        	m.setIcone(rs.getString("icone"));
+        	m.setExibir(rs.getInt("exibir"));
+        	lista.add(m);
+        }
+	    this.desconectar();
+	    return lista;
+	
+	} 
+	
+
+	public boolean vincular ( int idMenu, int idPerfil ) {
+		try {
+			String sql = "INSERT INTO menu_perfil (idMenu,idPerfil) "+
+	                 "VALUES(?,?)";
+			this.conectar();
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, idMenu);
+			pstm.setInt(2, idPerfil);
+			pstm.execute();
+			this.desconectar();
+			return true;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+		
+	}
+
 	
 }

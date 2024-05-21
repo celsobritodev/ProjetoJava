@@ -102,7 +102,7 @@ public Usuario getCarregaPorId (int idUsuario) throws Exception{
 	}
 
 	
-public boolean deletar (Usuario u) {
+public boolean desativar (Usuario u) {
 	
 	try {
 	   this.conectar();

@@ -1,10 +1,34 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Perfil {
   private int idPerfil;
   private String nome;
+  private ArrayList<Menu> menus;
+  private ArrayList<Menu> naoMenus;
   
   
+public ArrayList<Menu> getNaoMenus() {
+	return naoMenus;
+}
+
+
+public void setNaoMenus(ArrayList<Menu> naoMenus) {
+	this.naoMenus = naoMenus;
+}
+
+
+public ArrayList<Menu> getMenus() {
+	return menus;
+}
+
+
+public void setMenus(ArrayList<Menu> menus) {
+	this.menus = menus;
+}
+
+
 public Perfil() {
 	
 }

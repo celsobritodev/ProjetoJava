@@ -34,7 +34,7 @@
 		<%@include file="menu.jsp"%>
 		<h1>Lista de Usuarios</h1>
 
-		<a href="form_usuario.jsp" class="btn btn-primary">Novo Cadastro</a>
+		<a href="form_usuario.jsp" class="btn btn-primary">Novo Usuario</a>
 
 		<table class="table table-hover table-striped table-bordered display"
 			id="listarUsuario">

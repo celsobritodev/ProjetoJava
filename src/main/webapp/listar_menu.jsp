@@ -34,7 +34,7 @@
 		<%@include file="menu.jsp"%>
 		<h1>Lista de Menus</h1>
 
-		<a href="form_menu.jsp" class="btn btn-primary">Listar Menu</a>
+		<a href="form_menu.jsp" class="btn btn-primary">Novo Menu</a>
 
 		<table class="table table-hover table-striped table-bordered display"
 			id="listarMenu">
