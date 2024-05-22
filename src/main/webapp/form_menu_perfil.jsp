@@ -32,7 +32,6 @@
 			<div class="row">
 				<div class="form-group col-sm-6">
 					<label for="perfil" class="control-label">${perfilv.nome}</label>
-
 				</div>
 			</div>
 			<div class="row">
@@ -51,8 +50,7 @@
 				<a href="listar_perfil.jsp" class="btn btn-warning">Voltar</a>
 			</div>
 		</form>
-	<table class="table table-hover table-striped table-bordered display"
-			id="listarMenu">
+	<table class="table table-hover table-striped table-bordered display" id="listarMenu">
 			<thead>
 			<tr>
 				<th>ID</th>
@@ -74,9 +72,7 @@
 			</tr>
 			</tfoot>
 			
-			
 			<jsp:useBean class="model.MenuDAO" id="mDAO"></jsp:useBean>
-			
 			
 			<tbody>
 			<c:forEach var="m" items="${perfilv.menus}">

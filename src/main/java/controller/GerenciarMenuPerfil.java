@@ -37,6 +37,7 @@ public class GerenciarMenuPerfil extends HttpServlet {
        
        String idPerfil = request.getParameter("idPerfil");
        String acao = request.getParameter("acao");
+       
        try {
 		PerfilDAO pDAO = new PerfilDAO();
 		Perfil p = new Perfil();
@@ -70,7 +71,34 @@ public class GerenciarMenuPerfil extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	  PrintWriter out = response.getWriter();
+	  String mensagem ="";
+	  String idPerfil = request.getParameter("idPerfil");
+	  String idMenu = request.getParameter("idMenu");
+	  try {
+		if (idPerfil.equals("")||idMenu.equals("")) {
+			mensagem = "Campos obrigatorios deverão ser selecionados";
+		} else {
+			PerfilDAO pDAO = new PerfilDAO();
+			if (pDAO.vincular(Integer.parseInt(idMenu), Integer.parseInt(idPerfil))) {
+				mensagem = "Vinculado com sucesso!";
+			} else {
+				mensagem = "Erro ao vincular o menu ao perfil";
+			}
+		}
+	} catch (Exception e) {
+		out.print(e);
+		mensagem="Erro ao executar";
+	  
+	}
+	  out.println("<html>");
+		out.println("<body>");
+		out.println("<script type='text/javascript'>");
+	    out.println("alert('"+mensagem+"');");
+	    out.println("location.href='gerenciar_menu_perfil.do?acao=gerenciar&idPerfil="+idPerfil+"';");
+	    out.println("</script>");
+	    out.println("</body>");
+	    out.println("</html>");	
 	}
 
 }

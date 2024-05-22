@@ -96,9 +96,10 @@ public class PerfilDAO extends DataBaseDAO {
 	}
 	
 	
+	// devolve todos os objetos menus que pertencem ao perfil idPerfil
 	public ArrayList<Menu> menusVinculadosPorPerfil(int idPerfil) throws Exception {
 	 
-		ArrayList<Menu> lista = new ArrayList<Menu> ();
+		ArrayList<Menu> lista = new ArrayList<Menu>();
 		String sql = "SELECT m.* FROM menu_perfil AS mp, menu AS m "+
 		" WHERE mp.idMenu = m.idMenu AND mp.idPerfil=?";
         this.conectar();
@@ -109,9 +110,9 @@ public class PerfilDAO extends DataBaseDAO {
         	Menu m = new Menu();
         	m.setIdMenu(rs.getInt("m.idMenu"));
         	m.setNome(rs.getString("m.nome"));
-        	m.setLink(rs.getString("link"));
-        	m.setIcone(rs.getString("icone"));
-        	m.setExibir(rs.getInt("exibir"));
+        	m.setLink(rs.getString("m.link"));
+        	m.setIcone(rs.getString("m.icone"));
+        	m.setExibir(rs.getInt("m.exibir"));
         	lista.add(m);
         }
 	    this.desconectar();
