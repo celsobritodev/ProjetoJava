@@ -11,8 +11,11 @@
 </head>
 <body>
  <div class="container">
+ 
    <%@include file="banner.jsp"%>
-   <%@include file="menu.jsp"%>
+   
+   
+  <%@include file="menu.jsp"%>
    <h1>Página inicial</h1>
  </div>
 </body>

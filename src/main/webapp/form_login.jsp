@@ -13,8 +13,18 @@
 
 <body>
 
- <h1>Formulario de Login</h1>
- 
+  <h1>Formulario de Login</h1>
+  <%
+    String mensagem = (String) request.getSession().getAttribute("mensagem");
+    if(mensagem!=null) {
+    	request.getSession().removeAttribute("mensagem");
+    
+  %>
+  <div class="alert alert-info"><%=mensagem%></div>
+  <%
+    }
+    
+    %>
  <form action="gerenciar_login.do" method="post">
  
    <div class="row">

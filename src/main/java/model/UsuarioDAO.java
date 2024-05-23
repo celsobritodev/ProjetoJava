@@ -141,7 +141,9 @@ public Usuario getRecuperarUsuario(String login) {
 		return u;
 	} catch (Exception e) {
 		System.out.println(e);
+		return null;
 	}
+
 }
 	
 
