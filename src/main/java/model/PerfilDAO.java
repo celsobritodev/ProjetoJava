@@ -165,4 +165,24 @@ public class PerfilDAO extends DataBaseDAO {
 	}
 
 	
+	public boolean desvincular(int idMenu, int idPerfil) {
+		try {
+			String sql = "DELETE FROM menu_perfil WHERE idMenu=? AND idPerfil=?";
+			this.conectar();
+			PreparedStatement pstm = conn.prepareStatement(sql);
+			pstm.setInt(1, idMenu);
+			pstm.setInt(2, idPerfil);
+			pstm.execute();
+			this.desconectar();
+			return true;
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+		
+		
+	}
+	
+	
 }

@@ -21,7 +21,7 @@
 
 <script type="text/javascript">
   function confirmarExclusao(id,nome) {
-	  if(confirm('Deseja realmente excluir o menu '+nome+' ?')) {
+	  if(confirm('Deseja realmente excluir o menu "'+nome+'"" ?')) {
 		  location.href='gerenciar_menu.do?acao=deletar&idMenu='+id;
 	  }
   }

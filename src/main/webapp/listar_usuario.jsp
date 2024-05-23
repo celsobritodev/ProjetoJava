@@ -21,7 +21,7 @@
 
 <script type="text/javascript">
   function confirmarExclusao(id,nome) {
-	  if(confirm('Deseja realmente desativar o usuario '+nome+' ?')) {
+	  if(confirm('Deseja realmente desativar o usuario "'+nome+'" ?')) {
 		  location.href='gerenciar_usuario.do?acao=deletar&idUsuario='+id;
 	  }
   }

@@ -9,12 +9,11 @@
 	content="width=device-width,initial-scale=1, maximum-scale=1, user=scalable=no"
 	name="viewport" />
 <link rel="stylesheet" href="bootstrap-3.3.7/dist/css/bootstrap.min.css" />
-<link rel="stylesheet"
-	href="bootstrap-3.3.7/dist/bootstrap-theme.min.css">
+<link rel="stylesheet" href="bootstrap-3.3.7/dist/bootstrap-theme.min.css">
 <title>Insert title here</title>
 <script type="text/javascript">
   function confirmarExclusao(idMenu,nome,idPerfil) {
-	  if(confirm('Deseja realmente desvincular o menu '+nome+' ?')) {
+	  if(confirm('Deseja realmente desvincular o menu "'+nome+'" ?')) {
 		  location.href='gerenciar_menu_perfil.do?acao=desvincular&idMenu='+idMenu+'&idPerfil='+idPerfil;
 	  }
   }

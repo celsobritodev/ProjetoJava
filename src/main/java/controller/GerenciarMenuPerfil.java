@@ -51,6 +51,18 @@ public class GerenciarMenuPerfil extends HttpServlet {
 				mensagem = "Perfil não encontrado";
 			}
 		}
+		if (acao.equals("desvincular")) {
+			String idMenu = request.getParameter("idMenu");
+			if(idMenu.equals("")) {
+				mensagem="O campo idMenu deverá ser selecionado";
+			} else {
+				if(pDAO.desvincular(Integer.parseInt(idMenu),Integer.parseInt(idPerfil))) {
+					mensagem = "Desvinculado com sucesso!";
+				} else {
+					mensagem = "Erro ao desvincular";
+				}
+			}
+		}
 		
 	} catch (Exception e) {
 		out.print(e);
@@ -91,7 +103,7 @@ public class GerenciarMenuPerfil extends HttpServlet {
 		mensagem="Erro ao executar";
 	  
 	}
-	  out.println("<html>");
+	    out.println("<html>");
 		out.println("<body>");
 		out.println("<script type='text/javascript'>");
 	    out.println("alert('"+mensagem+"');");

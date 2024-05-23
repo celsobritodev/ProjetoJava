@@ -20,7 +20,7 @@
 <title>JSP PAGE</title>
 <script type="text/javascript">
   function confirmarExclusao(id,nome) {
-	  if(confirm('Deseja realmente excluir o perfil '+nome+' ?')) {
+	  if(confirm('Deseja realmente excluir o perfil "'+nome+'" ?')) {
 		  location.href='gerenciar_perfil.do?acao=deletar&idPerfil='+id;
 	  }
   }
