@@ -70,7 +70,7 @@ public class PerfilDAO extends DataBaseDAO {
 			p.setIdPerfil(rs.getInt("idPerfil"));
 			p.setNome(rs.getString("nome"));
 			p.setMenus(menusVinculadosPorPerfil(idPerfil));
-			p.setMenus(menusNaoVinculadosPorPerfil(idPerfil));
+			p.setNaoMenus(menusNaoVinculadosPorPerfil(idPerfil));
 			
 		}
 		this.desconectar();

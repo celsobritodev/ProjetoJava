@@ -36,11 +36,11 @@
 			</div>
 			<div class="row">
 				<div class="form-group col-sm-6">
-					<label for="menu" class="control-label">Menus</label>
+					<label for="menu" class="control-label">Menus não vinculados</label>
 					 <select name="idMenu" required id="idMenu" class="form-control">
 						<option value="">Selecione o Menu</option>
 						<c:forEach var="m" items="${perfilv.naoMenus}">
-							<option>value="${m.idMenu}">${m.nome}</option>
+							<option value="${m.idMenu}">${m.nome}</option>
 						</c:forEach>
 					</select>
 				</div>
