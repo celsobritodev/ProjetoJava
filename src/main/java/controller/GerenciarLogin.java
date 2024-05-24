@@ -91,10 +91,10 @@ public class GerenciarLogin extends HttpServlet {
 		}
 	}
 	
-	public static Usuario verificarAcesso(HttpServletRequest request, HttpServletResponse respose) {
+	public static Usuario verificarAcesso(HttpServletRequest request, HttpServletResponse response) {
 		
 		Usuario u = null;
-	//	GerenciarLogin.response = response;
+		GerenciarLogin.response = response;
 		try {
 			HttpSession sessao = request.getSession();
 			if(sessao.getAttribute("ulogado")==null) {
@@ -132,7 +132,7 @@ public class GerenciarLogin extends HttpServlet {
 	}
 	
 	
-public static boolean verificarPermissao(HttpServletRequest request, HttpServletResponse respose) {
+public static boolean verificarPermissao(HttpServletRequest request, HttpServletResponse response) {
 		
 		Usuario u = null;
 		GerenciarLogin.response = response;

@@ -16,30 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `menu`
+-- Table structure for table `menu_perfil`
 --
 
-DROP TABLE IF EXISTS `menu`;
+DROP TABLE IF EXISTS `menu_perfil`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `menu` (
-  `idMenu` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) NOT NULL,
-  `link` varchar(100) NOT NULL,
-  `icone` varchar(45) DEFAULT NULL,
-  `exibir` int NOT NULL,
-  PRIMARY KEY (`idMenu`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `menu_perfil` (
+  `idMenu` int NOT NULL,
+  `idPerfil` int NOT NULL,
+  PRIMARY KEY (`idMenu`,`idPerfil`),
+  KEY `fk_menu_has_perfil_perfil1_idx` (`idPerfil`),
+  CONSTRAINT `fk_menu_has_perfil_menu` FOREIGN KEY (`idMenu`) REFERENCES `menu` (`idMenu`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_menu_has_perfil_perfil1` FOREIGN KEY (`idPerfil`) REFERENCES `perfil` (`idPerfil`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `menu`
+-- Dumping data for table `menu_perfil`
 --
 
-LOCK TABLES `menu` WRITE;
-/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'home','index.jsp','',1),(2,'lista os perfis','listar_perfil.jsp','',1),(3,'lista os menus','listar_menu.jsp','',1),(4,'lista os usuarios','listar_usuario.jsp',NULL,1),(5,'Cadastrar perfil','form_perfil.jsp',NULL,2);
-/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
+LOCK TABLES `menu_perfil` WRITE;
+/*!40000 ALTER TABLE `menu_perfil` DISABLE KEYS */;
+INSERT INTO `menu_perfil` VALUES (1,1),(2,1),(4,1),(5,1),(1,8),(3,8),(4,8),(5,8);
+/*!40000 ALTER TABLE `menu_perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-22 22:09:57
+-- Dump completed on 2024-05-24  9:05:12

@@ -16,27 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `perfil`
+-- Table structure for table `menu`
 --
 
-DROP TABLE IF EXISTS `perfil`;
+DROP TABLE IF EXISTS `menu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `perfil` (
-  `idPerfil` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `menu` (
+  `idMenu` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
-  PRIMARY KEY (`idPerfil`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
+  `link` varchar(100) NOT NULL,
+  `icone` varchar(45) DEFAULT NULL,
+  `exibir` int NOT NULL,
+  PRIMARY KEY (`idMenu`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `perfil`
+-- Dumping data for table `menu`
 --
 
-LOCK TABLES `perfil` WRITE;
-/*!40000 ALTER TABLE `perfil` DISABLE KEYS */;
-INSERT INTO `perfil` VALUES (1,'Administrador'),(2,'Diretor');
-/*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
+LOCK TABLES `menu` WRITE;
+/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` VALUES (1,'Inicio','index.jsp','',1),(2,'listar os perfis','listar_perfil.jsp','',1),(3,'listar os menus','listar_menu.jsp','',1),(4,'listar os usuarios','listar_usuario.jsp','',1),(5,'Cadastrar perfil','form_perfil.jsp',NULL,2);
+/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-22 22:09:58
+-- Dump completed on 2024-05-24  9:05:11
