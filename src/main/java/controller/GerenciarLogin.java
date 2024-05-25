@@ -85,6 +85,7 @@ public class GerenciarLogin extends HttpServlet {
 			out.print("<script>");
 			out.print("alert('"+mensagem+"');");
 			out.print("history.back();");
+			out.print("</script>);");
 			out.close();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -112,7 +113,8 @@ public class GerenciarLogin extends HttpServlet {
 				} else {
 					boolean possuiAcesso = false;
 					for(Menu m: u.getPerfil().getMenus()) {
-						if(uri.contains(m.getLink( ))) {
+						String sLinkMenuUser = m.getLink();
+						if(uri.contains(sLinkMenuUser)) {
 							possuiAcesso = true;
 							break;
 						}
@@ -154,7 +156,8 @@ public static boolean verificarPermissao(HttpServletRequest request, HttpServlet
 				} else {
 				
 					for(Menu m: u.getPerfil().getMenus()) {
-						if(uri.contains(m.getLink( ))) {
+						String sLinkMenuUser = m.getLink();
+						if(uri.contains(sLinkMenuUser)) {
 							possuiAcesso = true;
 							break;
 						}
