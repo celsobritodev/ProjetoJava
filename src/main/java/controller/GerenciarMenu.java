@@ -46,6 +46,7 @@ public class GerenciarMenu extends HttpServlet {
 		try {
 			MenuDAO mDAO = new MenuDAO();
 			if (acao.equals("alterar")) {
+		  	 if (GerenciarLogin.verificarPermissao(request,response)) {
 				m = mDAO.getCarregaPorId(Integer.parseInt(idMenu));
 				if (m.getIdMenu()>0) {
 					RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_menu.jsp");
@@ -55,14 +56,21 @@ public class GerenciarMenu extends HttpServlet {
 					mensagem = "Menu não encontrado";
 					
 				}
+			 } else {
+				 mensagem = "Acesso negado!";
+			 }
 			}
 			if (acao.equals("deletar")) {
+			 if (GerenciarLogin.verificarPermissao(request,response)) {
 				m.setIdMenu(Integer.parseInt(idMenu));
 				if (mDAO.deletar(m)) {
 					mensagem = "Deletado com sucesso";
 				} else {
 					mensagem = "Erro ao excluir o menu";
 				}
+			 } else {
+				mensagem = "Acesso negado!"; 
+			 }
 			}
 			
 		} catch (Exception e) {

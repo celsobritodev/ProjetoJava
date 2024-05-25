@@ -15,108 +15,116 @@ import java.io.PrintWriter;
 /**
  * Servlet implementation class GerenciarPerfil
  */
-@WebServlet(urlPatterns = { "/gerenciar_perfil.do"})
+@WebServlet(urlPatterns = { "/gerenciar_perfil.do" })
 public class GerenciarPerfil extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public GerenciarPerfil() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public GerenciarPerfil() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		String mensagem ="";
-		
+		String mensagem = "";
+
 		String acao = request.getParameter("acao");
 		String idPerfil = request.getParameter("idPerfil");
-		
-		
+
 		Perfil p = new Perfil();
-		
+
 		try {
 			PerfilDAO pDAO = new PerfilDAO();
 			if (acao.equals("alterar")) {
-				p = pDAO.getCarregaPorId(Integer.parseInt(idPerfil));
-				if (p.getIdPerfil()>0) {
-					RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_perfil.jsp");
-					request.setAttribute("perfil", p);
-                    disp.forward(request, response);					
-				} else  {
-					mensagem = "Perfil não encontrado";
-					
+				if (GerenciarLogin.verificarPermissao(request, response)) {
+					p = pDAO.getCarregaPorId(Integer.parseInt(idPerfil));
+					if (p.getIdPerfil() > 0) {
+						RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_perfil.jsp");
+						request.setAttribute("perfil", p);
+						disp.forward(request, response);
+					} else {
+						mensagem = "Perfil não encontrado";
+
+					}
+				} else {
+					mensagem = "Acesso Negado";
 				}
 			}
 			if (acao.equals("deletar")) {
-				p.setIdPerfil(Integer.parseInt(idPerfil));
-				if (pDAO.deletar(p)) {
-					mensagem = "Deletado com sucesso";
+				if (GerenciarLogin.verificarPermissao(request, response)) {
+					p.setIdPerfil(Integer.parseInt(idPerfil));
+					if (pDAO.deletar(p)) {
+						mensagem = "Deletado com sucesso";
+					} else {
+						mensagem = "Erro ao excluir o perfil";
+					}
 				} else {
-					mensagem = "Erro ao excluir o perfil";
+					mensagem = "Acesso Negado!";
 				}
 			}
-			
+
 		} catch (Exception e) {
 			out.print(e);
 			mensagem = "Erro ao executar";
 		}
-		
+
 		out.println("<html>");
 		out.println("<body>");
 		out.println("<script type='text/javascript'>");
-	    out.println("alert('"+mensagem+"');");
-	    out.println("location.href='listar_perfil.jsp';");
-	    out.println("</script>");
-	    out.println("</body>");
-	    out.println("</html>");
-		
-		
-		
+		out.println("alert('" + mensagem + "');");
+		out.println("location.href='listar_perfil.jsp';");
+		out.println("</script>");
+		out.println("</body>");
+		out.println("</html>");
+
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	       PrintWriter out = response.getWriter();
-	       String idPerfil = request.getParameter("idPerfil");
-	       String nome = request.getParameter("nome");
-	       
-	       String mensagem="";
-	       
-	       Perfil p = new Perfil();
-	       try {
-	    	   PerfilDAO pDAO = new PerfilDAO();
-	    	   if (!idPerfil.isEmpty()) {
-	    		   p.setIdPerfil(Integer.parseInt(idPerfil));
-	    	   }
-	    	   if (nome.equals("") || nome.isEmpty()) {
-	    		   mensagem = "Campos obrigatórios deverão ser preenchidos";
-	    	   } else {
-	    		   p.setNome(nome);
-	    		   if (pDAO.gravar(p)) {
-	    			   mensagem = "Gravado com sucesso";
-	    		   } else {
-	    			   mensagem = "Erro ao gravar no banco de dados";
-	    		   }
-	    	   }
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		String idPerfil = request.getParameter("idPerfil");
+		String nome = request.getParameter("nome");
+
+		String mensagem = "";
+
+		Perfil p = new Perfil();
+		try {
+			PerfilDAO pDAO = new PerfilDAO();
+			if (!idPerfil.isEmpty()) {
+				p.setIdPerfil(Integer.parseInt(idPerfil));
+			}
+			if (nome.equals("") || nome.isEmpty()) {
+				mensagem = "Campos obrigatórios deverão ser preenchidos";
+			} else {
+				p.setNome(nome);
+				if (pDAO.gravar(p)) {
+					mensagem = "Gravado com sucesso";
+				} else {
+					mensagem = "Erro ao gravar no banco de dados";
+				}
+			}
 		} catch (Exception e) {
 			out.print(e);
-			mensagem="Erro ao executoar";
+			mensagem = "Erro ao executoar";
 		}
-	    out.println("<script type='text/javascript'>");
-	    out.println("alert('"+mensagem+"');");
-	    out.println("location.href='listar_perfil.jsp';");
-	    out.println("</script>");
-	       
-	       
+		out.println("<script type='text/javascript'>");
+		out.println("alert('" + mensagem + "');");
+		out.println("location.href='listar_perfil.jsp';");
+		out.println("</script>");
+
 	}
 
 }

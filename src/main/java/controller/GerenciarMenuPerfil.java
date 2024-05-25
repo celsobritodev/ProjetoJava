@@ -42,6 +42,7 @@ public class GerenciarMenuPerfil extends HttpServlet {
 		PerfilDAO pDAO = new PerfilDAO();
 		Perfil p = new Perfil();
 		if (acao.equals("gerenciar")) {
+		 if (GerenciarLogin.verificarPermissao(request,response)) {
 			p = pDAO.getCarregaPorId(Integer.parseInt(idPerfil));
 			if (p.getIdPerfil()>0) {
 				RequestDispatcher disp = getServletContext().getRequestDispatcher("/form_menu_perfil.jsp");
@@ -50,8 +51,12 @@ public class GerenciarMenuPerfil extends HttpServlet {
 			} else {
 				mensagem = "Perfil não encontrado";
 			}
+		 } else {
+			mensagem="Acesso negado!"; 
+		 }
 		}
 		if (acao.equals("desvincular")) {
+			 if (GerenciarLogin.verificarPermissao(request,response)) {
 			String idMenu = request.getParameter("idMenu");
 			if(idMenu.equals("")) {
 				mensagem="O campo idMenu deverá ser selecionado";
@@ -62,6 +67,9 @@ public class GerenciarMenuPerfil extends HttpServlet {
 					mensagem = "Erro ao desvincular";
 				}
 			}
+			 } else {
+				mensagem = "Acesso Negado!"; 
+			 }
 		}
 		
 	} catch (Exception e) {

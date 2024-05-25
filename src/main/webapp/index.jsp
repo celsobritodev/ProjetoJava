@@ -11,12 +11,9 @@
 </head>
 <body>
  <div class="container">
- 
-   <%@include file="banner.jsp"%>
-   
-   
+  <%@include file="banner.jsp"%>
   <%@include file="menu.jsp"%>
-   <h1>Página inicial</h1>
+  <h1>Página inicial</h1>
  </div>
 </body>
 </html>

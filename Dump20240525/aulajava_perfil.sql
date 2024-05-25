@@ -16,30 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `menu_perfil`
+-- Table structure for table `perfil`
 --
 
-DROP TABLE IF EXISTS `menu_perfil`;
+DROP TABLE IF EXISTS `perfil`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `menu_perfil` (
-  `idMenu` int NOT NULL,
-  `idPerfil` int NOT NULL,
-  PRIMARY KEY (`idMenu`,`idPerfil`),
-  KEY `fk_menu_has_perfil_perfil1_idx` (`idPerfil`),
-  CONSTRAINT `fk_menu_has_perfil_menu` FOREIGN KEY (`idMenu`) REFERENCES `menu` (`idMenu`) ON DELETE RESTRICT ON UPDATE CASCADE,
-  CONSTRAINT `fk_menu_has_perfil_perfil1` FOREIGN KEY (`idPerfil`) REFERENCES `perfil` (`idPerfil`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `perfil` (
+  `idPerfil` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) NOT NULL,
+  PRIMARY KEY (`idPerfil`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `menu_perfil`
+-- Dumping data for table `perfil`
 --
 
-LOCK TABLES `menu_perfil` WRITE;
-/*!40000 ALTER TABLE `menu_perfil` DISABLE KEYS */;
-INSERT INTO `menu_perfil` VALUES (1,1),(2,1),(4,1),(5,1),(1,8),(3,8),(4,8),(5,8);
-/*!40000 ALTER TABLE `menu_perfil` ENABLE KEYS */;
+LOCK TABLES `perfil` WRITE;
+/*!40000 ALTER TABLE `perfil` DISABLE KEYS */;
+INSERT INTO `perfil` VALUES (1,'Administrador'),(2,'Diretor'),(3,'Financeiro'),(4,'Vendas'),(5,'Expedição'),(6,'Produção');
+/*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-23  9:16:26
+-- Dump completed on 2024-05-25  9:33:30

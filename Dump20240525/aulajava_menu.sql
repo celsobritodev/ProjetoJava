@@ -29,7 +29,7 @@ CREATE TABLE `menu` (
   `icone` varchar(45) DEFAULT NULL,
   `exibir` int NOT NULL,
   PRIMARY KEY (`idMenu`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `menu` (
 
 LOCK TABLES `menu` WRITE;
 /*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'Inicio','index.jsp','',1),(2,'listar os perfis','listar_perfil.jsp','',1),(3,'listar os menus','listar_menu.jsp','',1),(4,'listar os usuarios','listar_usuario.jsp','',1),(5,'Cadastrar perfil','form_perfil.jsp',NULL,2);
+INSERT INTO `menu` VALUES (1,'Inicio','index.jsp','',1),(2,'Perfis','listar_perfil.jsp','',1),(3,'Menus','listar_menu.jsp','',1),(4,'Cadastrar Perfil','form_perfil.jsp','',2),(5,'Alterar Perfil','gerenciar_perfil.do?acao=alterar',' ',2),(6,'Deletar Perfil','gerenciar_perfil.do?acao=deletar',' ',2),(7,'Acessos','gerenciar_menu_perfil.do?acao=gerenciar',' ',2),(8,'Formulario Menu Perfil','form_menu_perfil.jsp',' ',2);
 /*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-23  9:16:25
+-- Dump completed on 2024-05-25  9:33:29

@@ -7,7 +7,7 @@
   request.setAttribute("ulogado",ulogado);
 %>
 
-<div class="pull-right">Bem Vindo, <c:if test="${ulogado!=null}">${ulogado.nome}</c:if>
+<div class="pull-right">Bem Vindo, "<c:if test="${ulogado!=null}">${ulogado.nome}"  </c:if>
   <a href="gerenciar_login.do">Sair</a>
 </div>  
 
