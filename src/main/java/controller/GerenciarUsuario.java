@@ -61,7 +61,7 @@ public class GerenciarUsuario extends HttpServlet {
 					mensagem = "Acesso Negado!";
 				}
 			}
-			if (acao.equals("deletar")) {
+			if (acao.equals("desativar")) {
 				 if (GerenciarLogin.verificarPermissao(request,response)) {
 				u.setIdUsuario(Integer.parseInt(idUsuario));
 				if (uDAO.desativar(u)) {
