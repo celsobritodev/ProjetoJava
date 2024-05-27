@@ -16,8 +16,8 @@
 	<ul>
 	
 	<c:if test="${ulogado!=null && ulogado.perfil!=null }">
-	 <c:forEach var="menu" items="${ulogado.perfil.menus}">
-	   <c:if test="${menu.exibir==1 }">
+	 <c:forEach var="menu" items="${ulogado.perfil.menus}">  <!-- vai exibir os menus conforme o perfil  -->
+	   <c:if test="${menu.exibir==1 }"> <!-- 1=item do menu principal, 2=botao internos -->
 	   <li><a href="${menu.link}"> ${menu.nome}</a></li>
 	   </c:if>
 	 </c:forEach>

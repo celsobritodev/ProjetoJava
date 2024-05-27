@@ -16,33 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `usuario`
+-- Table structure for table `menu`
 --
 
-DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `menu`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuario` (
-  `idUsuario` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) NOT NULL,
-  `login` varchar(45) NOT NULL,
-  `senha` varchar(45) NOT NULL,
-  `status` int NOT NULL,
-  `idPerfil` int NOT NULL,
-  PRIMARY KEY (`idUsuario`),
-  KEY `fk_usuario_perfil1_idx` (`idPerfil`),
-  CONSTRAINT `fk_usuario_perfil1` FOREIGN KEY (`idPerfil`) REFERENCES `perfil` (`idPerfil`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `menu` (
+  `idMenu` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) NOT NULL,
+  `link` varchar(100) NOT NULL,
+  `icone` varchar(45) DEFAULT NULL,
+  `exibir` int NOT NULL,
+  PRIMARY KEY (`idMenu`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
+-- Dumping data for table `menu`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'ana','ana','123',1,1),(2,'joao','joao','123',2,2),(3,'Priscila','pri','123',1,1),(4,'Maria','maria1','123',2,1);
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+LOCK TABLES `menu` WRITE;
+/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
+INSERT INTO `menu` VALUES (1,'Inicio','index.jsp','',1),(2,'Perfis','listar_perfil.jsp','',1),(3,'Menus','listar_menu.jsp','',1),(4,'Cadastrar Perfil','form_perfil.jsp','',2),(5,'Alterar Perfil','gerenciar_perfil.do?acao=alterar',' ',2),(6,'Deletar Perfil','gerenciar_perfil.do?acao=deletar',' ',2),(7,'Acessos','gerenciar_menu_perfil.do?acao=gerenciar',' ',2),(8,'Formulario Menu Perfil','form_menu_perfil.jsp',' ',2),(9,'Usuarios','listar_usuario.jsp',' ',1);
+/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-25  9:33:29
+-- Dump completed on 2024-05-27  9:17:43

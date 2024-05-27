@@ -20,7 +20,7 @@
 <title>JSP PAGE</title>
 
 <script type="text/javascript">
-  function confirmarExclusao(id,nome) {
+  function confirmarDesativacao(id,nome) {
 	  if(confirm('Deseja realmente desativar o usuario "'+nome+'" ?')) {
 		  location.href='gerenciar_usuario.do?acao=desativar&idUsuario='+id;
 	  }
@@ -85,7 +85,7 @@
 					<td><a class="btn btn-primary" href="gerenciar_usuario.do?acao=alterar&idUsuario=${u.idUsuario}"> 
 							<i class="glyphicon glyphicon-pencil"></i>
 					</a>
-						<button class="btn-danger" onclick="confirmarExclusao(${u.idUsuario},'${u.nome}')">
+						<button class="btn-danger" onclick="confirmarDesativacao(${u.idUsuario},'${u.nome}')">
 							<i class="glyphicon glyphicon-trash"></i>
 						</button></td>
 				</tr>

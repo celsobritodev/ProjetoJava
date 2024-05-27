@@ -92,16 +92,18 @@ public class GerenciarLogin extends HttpServlet {
 		}
 	}
 	
+	
+	// verifica  quais menus o usuario pode acessar
 	public static Usuario verificarAcesso(HttpServletRequest request, HttpServletResponse response) {
 		
 		Usuario u = null;
 		GerenciarLogin.response = response;
 		try {
 			HttpSession sessao = request.getSession();
-			if(sessao.getAttribute("ulogado")==null) {
+			if(sessao.getAttribute("ulogado")==null) { // se o usuario nao estiver logado manda para o form login
 				response.sendRedirect("form_login.jsp");
 			} else {
-				String uri = request.getRequestURI();
+				String uri = request.getRequestURI(); // string com o caminho da pagina de onde esta vindo
 				String queryString = request.getQueryString();
 				if (queryString!=null) {
 					uri += "?"+queryString;
@@ -113,8 +115,8 @@ public class GerenciarLogin extends HttpServlet {
 				} else {
 					boolean possuiAcesso = false;
 					for(Menu m: u.getPerfil().getMenus()) {
-						String sLinkMenuUser = m.getLink();
-						if(uri.contains(sLinkMenuUser)) {
+						String sLinkMenuUser = m.getLink(); // link que o usuario tem acesso
+						if(uri.contains(sLinkMenuUser)) {  // verifica se a pagina atual (uri) esta na lista de paginas (sLinkMenuUser) que o usuario tem acesso
 							possuiAcesso = true;
 							break;
 						}
@@ -133,8 +135,8 @@ public class GerenciarLogin extends HttpServlet {
 		return u;
 	}
 	
-	
-public static boolean verificarPermissao(HttpServletRequest request, HttpServletResponse response) {
+  // verifica se o usuario pode fazer a operacao vinculada ao botao	
+	public static boolean verificarPermissao(HttpServletRequest request, HttpServletResponse response) {
 		
 		Usuario u = null;
 		GerenciarLogin.response = response;

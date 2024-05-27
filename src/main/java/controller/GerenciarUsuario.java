@@ -67,7 +67,7 @@ public class GerenciarUsuario extends HttpServlet {
 				if (uDAO.desativar(u)) {
 					mensagem = "Desativado com sucesso";
 				} else {
-					mensagem = "Erro ao excluir o usuario";
+					mensagem = "Erro ao desativar o usuario";
 				}
 				 } else {
 					 mensagem = "Acesso Negado!";

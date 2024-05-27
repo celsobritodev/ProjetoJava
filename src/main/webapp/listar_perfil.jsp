@@ -51,6 +51,7 @@
 				<th>Opções</th>
 			</tr>
 			</tfoot>
+			
 			<jsp:useBean class="model.PerfilDAO" id="pDAO"></jsp:useBean>
 			<tbody>
 			<c:forEach var="p" items="${pDAO.lista}">
