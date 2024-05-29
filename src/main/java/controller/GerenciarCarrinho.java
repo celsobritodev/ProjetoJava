@@ -65,7 +65,7 @@ public class GerenciarCarrinho extends HttpServlet {
 					
 				}
 			} catch (Exception e) {
-				// TODO: handle exception
+				out.print(e);
 			}
 			
 			
@@ -87,8 +87,7 @@ public class GerenciarCarrinho extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		this.processRequest(request, response);
 	}
 
 	/**
