@@ -16,30 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `menu`
+-- Table structure for table `venda`
 --
 
-DROP TABLE IF EXISTS `menu`;
+DROP TABLE IF EXISTS `venda`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `menu` (
-  `idMenu` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) NOT NULL,
-  `link` varchar(100) NOT NULL,
-  `icone` varchar(45) DEFAULT NULL,
-  `exibir` int NOT NULL,
-  PRIMARY KEY (`idMenu`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `venda` (
+  `idVenda` int NOT NULL AUTO_INCREMENT,
+  `dataVenda` date NOT NULL,
+  `valorTotal` double NOT NULL,
+  `idCliente` int NOT NULL,
+  `idUsuario` int NOT NULL,
+  PRIMARY KEY (`idVenda`),
+  KEY `fk_venda_cliente1_idx` (`idCliente`),
+  KEY `fk_venda_usuario1_idx` (`idUsuario`),
+  CONSTRAINT `fk_venda_cliente1` FOREIGN KEY (`idCliente`) REFERENCES `cliente` (`idCliente`) ON DELETE RESTRICT ON UPDATE CASCADE,
+  CONSTRAINT `fk_venda_usuario1` FOREIGN KEY (`idUsuario`) REFERENCES `usuario` (`idUsuario`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `menu`
+-- Dumping data for table `venda`
 --
 
-LOCK TABLES `menu` WRITE;
-/*!40000 ALTER TABLE `menu` DISABLE KEYS */;
-INSERT INTO `menu` VALUES (1,'Inicio','index.jsp','',1),(2,'Perfis','listar_perfil.jsp','',1),(3,'Menus','listar_menu.jsp','',1),(4,'Cadastrar Perfil','form_perfil.jsp','',2),(5,'Alterar Perfil','gerenciar_perfil.do?acao=alterar',' ',2),(6,'Deletar Perfil','gerenciar_perfil.do?acao=deletar',' ',2),(7,'Acessos','gerenciar_menu_perfil.do?acao=gerenciar',' ',2),(8,'Formulario Menu Perfil','form_menu_perfil.jsp',' ',2),(9,'Usuarios','listar_usuario.jsp',' ',1);
-/*!40000 ALTER TABLE `menu` ENABLE KEYS */;
+LOCK TABLES `venda` WRITE;
+/*!40000 ALTER TABLE `venda` DISABLE KEYS */;
+/*!40000 ALTER TABLE `venda` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -51,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-28 10:03:39
+-- Dump completed on 2024-05-29 13:51:10

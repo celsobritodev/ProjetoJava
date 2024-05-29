@@ -23,7 +23,7 @@ public class ClienteDAO extends DataBaseDAO {
 		while (rs.next()) {
 			Cliente c = new Cliente();
 			c.setIdCliente(rs.getInt("idCliente"));
-			c.setNomeRazao(rs.getString("nome"));
+			c.setNomeRazao(rs.getString("nomeRazao"));
 			c.setCpfCnpj(rs.getString("cpfCnpj"));
 			c.setRgIe(rs.getString("rgIe"));
 			c.setDataNascAbertura(rs.getDate("dataNascAbertura"));
@@ -38,19 +38,24 @@ public class ClienteDAO extends DataBaseDAO {
 	public boolean gravar(Cliente c) {
 
 		try {
+			java.sql.Date dtData;
+			String sCpfCnpj;
 			this.conectar();
 			String sql;
 			if (c.getIdCliente() == 0) {
-				sql = "INSERT INTO cliente (nomeRazao,cpfCnpj,rgIe,dataNascAbertura,tipo) " + "VALUES (?.?.?.?.?)";
+				sql = "INSERT INTO cliente (nomeRazao,cpfCnpj,rgIe,dataNascAbertura,tipo) " + "VALUES (?,?,?,?,?)";
 			} else {
 				sql = "UPDATE cliente SET nomeRazao=?,cpfCnpj=?, rgIe=?, dataNascAbertura=?, tipo=? "
 						+ "WHERE idCliente=?";
 			}
 			PreparedStatement pstm = conn.prepareStatement(sql);
+			dtData=new Date(c.getDataNascAbertura().getTime());
+			//dtData=null;
+			sCpfCnpj=c.getCpfCnpj();
 			pstm.setString(1, c.getNomeRazao());
-			pstm.setString(2, c.getCpfCnpj());
+			pstm.setString(2,sCpfCnpj);
 			pstm.setString(3, c.getRgIe());
-			pstm.setDate(4, new Date(c.getDataNascAbertura().getTime()));
+			pstm.setDate(4,dtData);
 			pstm.setInt(5, c.getTipo());
 			if (c.getIdCliente() > 0) {
 				pstm.setInt(6, c.getIdCliente());

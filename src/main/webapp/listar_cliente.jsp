@@ -86,10 +86,16 @@
 					</td>
 					<td><a class="btn btn-primary" href="gerenciar_cliente.do?acao=alterar&idCliente=${c.idCliente}"> 
 							<i class="glyphicon glyphicon-pencil"></i>
-					</a>
-						<button class="btn-danger" onclick="confirmarExclusao(${c.idCliente},'${c.nome}')">
+					   </a>
+						<button class="btn-danger" onclick="confirmarExclusao(${c.idCliente},'${c.nomeRazao}')">
 							<i class="glyphicon glyphicon-trash"></i>
-						</button></td>
+						</button>
+						
+						<a href="form_venda.jsp?acao=novo&idCliente=${c.idCliente}" class="btn btn-primary">
+						<i class="glyphicon glyphicon">Realizar Venda</i>
+						</a>
+						
+					</td>
 				</tr>
 
 			</c:forEach>
