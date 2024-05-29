@@ -6,6 +6,7 @@
 	pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,8 +23,8 @@
 
 <script type="text/javascript">
   function confirmarExclusao(id,nome) {
-	  if(confirm('Deseja realmente excluir o produto "'+nome+'" ?')) {
-		  location.href='gerenciar_produto.do?acao=deletar&idProduto='+id;
+	  if(confirm('Deseja realmente excluir o cliente "'+nome+'" ?')) {
+		  location.href='gerenciar_cliente.do?acao=deletar&idCliente='+id;
 	  }
   }
 </script>
@@ -33,48 +34,60 @@
 	<div class="container">
 		<%@include file="banner.jsp"%>
 		<%@include file="menu.jsp"%>
-		<h1>Lista de Produto</h1>
+		<h1>Lista de Clientes</h1>
 
-		<a href="form_produto.jsp" class="btn btn-primary">Novo Cadastro</a>
+		<a href="form_cliente.jsp" class="btn btn-primary">Novo Cadastro</a>
 
 		<table class="table table-hover table-striped table-bordered display"
-			id="listarProduto">
+			id="listarCliente">
 			<thead>
 			<tr>
 				<th>ID</th>
-				<th>Nome</th>
-				<th>QTD</th>
-				<th>Valor</th>
+				<th>Nome / Razão Social</th>
+				<th>CPF / CNPJ</th>
+				<th>RG / IE</th>
+				<th>Data Nasc / Abertura</th>
+				<th>Tipo</th>
 				<th>Opções</th>
 			</tr>
 			</thead>
 			<tfoot>
 			<tr>
 				<th>ID</th>
-				<th>Nome</th>
-				<th>QTD</th>
-				<th>Valor</th>
+				<th>Nome / Razão Social</th>
+				<th>CPF / CNPJ</th>
+				<th>RG / IE</th>
+				<th>Data Nasc / Abertura</th>
+				<th>Tipo</th>
 				<th>Opções</th>
 			</tr>
 			</tfoot>
 			
 			
-			<jsp:useBean class="model.ProdutoDAO" id="pDAO"></jsp:useBean>
+			<jsp:useBean class="model.ClienteDAO" id="cDAO"></jsp:useBean>
 			
 			
 			<tbody>
-			<c:forEach var="p" items="${pDAO.lista}">
+			<c:forEach var="c" items="${cDAO.lista}">
 
 				<tr>
-					<td>${p.idProduto}</td>
-					<td>${p.nome}</td>
-					<td>${p.qtd}</td>
-					<td><fmt:formatNumber pattern="#,##0.00" value="${p.valor}"/></td>
-					
-					<td><a class="btn btn-primary" href="gerenciar_produto.do?acao=alterar&idProduto=${p.idProduto}"> 
+					<td>${c.idCliente}</td>
+					<td>${c.nomeRazao}</td>
+					<td>${c.cpfCnpj}</td>
+					<td>${c.rgIe}</td>
+					<td><fmt:formatDate pattern="dd/MM/yyyy" value="${c.dataNascAbertura}"/> </td>
+					<td>
+					 <c:if test="${c.tipo==1 }" >
+					  Pessoa Física
+					 </c:if>
+					  <c:if test="${c.tipo==2 }" >
+					  Pessoa Jurídica
+					 </c:if> 
+					</td>
+					<td><a class="btn btn-primary" href="gerenciar_cliente.do?acao=alterar&idCliente=${c.idCliente}"> 
 							<i class="glyphicon glyphicon-pencil"></i>
 					</a>
-						<button class="btn-danger" onclick="confirmarExclusao(${p.idProduto},'${p.nome}')">
+						<button class="btn-danger" onclick="confirmarExclusao(${c.idCliente},'${c.nome}')">
 							<i class="glyphicon glyphicon-trash"></i>
 						</button></td>
 				</tr>

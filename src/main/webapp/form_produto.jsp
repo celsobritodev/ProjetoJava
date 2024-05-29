@@ -19,7 +19,7 @@
 		<%@include file="menu.jsp"%>
 		<h1>Cadastrar Produto</h1>
 
-		<form action="gerenciar_proiduto.do" method="post">
+		<form action="gerenciar_produto.do" method="post">
 			<input type="hidden" name="idProduto" value="${produto.idProduto}" />
 			<div class="row">
 				<div class="form-group col-sm-6">
