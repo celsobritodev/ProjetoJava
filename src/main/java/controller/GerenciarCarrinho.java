@@ -63,14 +63,16 @@ public class GerenciarCarrinho extends HttpServlet {
 					session.setAttribute("venda", v);
 					response.sendRedirect("form_venda.jsp?acao=c");
 					
+				} else if(acao.equals("del")) {
+					int index = Integer.parseInt(request.getParameter("index"));
+					carrinho.remove(index);
+					v.setCarrinho(carrinho);
+					session.setAttribute("venda", v);
+					response.sendRedirect("form_finalizar_venda.jsp");
 				}
 			} catch (Exception e) {
 				out.print(e);
 			}
-			
-			
-			
-			
 			
 			
 			out.println("<h1>Servlet GerenciarCarrinho at "+request.getContextPath()+"</h1>");
@@ -90,10 +92,7 @@ public class GerenciarCarrinho extends HttpServlet {
 		this.processRequest(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub

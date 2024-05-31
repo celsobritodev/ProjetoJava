@@ -34,7 +34,7 @@
         		int idCliente = Integer.parseInt(request.getParameter("idCliente"));
         		c = cDAO.getCarregarPorId(idCliente);
         		v.setCliente(c);
-        		v.setVendedor(ulogado);
+        		v.setVendedor(ulogado); // ulogado é do tipo Usuario
         		v.setCarrinho(new ArrayList<VendaProduto>());
         		session.setAttribute("venda",v);
         		
