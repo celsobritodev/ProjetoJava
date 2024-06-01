@@ -30,7 +30,7 @@ CREATE TABLE `cliente` (
   `dataNascAbertura` date NOT NULL,
   `tipo` int NOT NULL,
   PRIMARY KEY (`idCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `cliente` (
 
 LOCK TABLES `cliente` WRITE;
 /*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (2,'celso','092.844.528-30','17.850.547','1966-11-03',1);
+INSERT INTO `cliente` VALUES (2,'celso','092.844.528-30','17.850.547','1966-11-03',1),(3,'Sandra','101880','172932','1973-07-09',1),(4,'Leticia','1232','2322','1997-01-23',1),(5,'Marina','334','746694','1994-04-05',1);
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-29 13:51:09
+-- Dump completed on 2024-06-01 10:03:05
