@@ -31,6 +31,8 @@ public class GerenciarCarrinho extends HttpServlet {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+	// Entra aqui se clicar no botão "Comprar"
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 

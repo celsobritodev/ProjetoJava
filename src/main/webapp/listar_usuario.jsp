@@ -17,7 +17,7 @@
 	href="bootstrap-3.3.7/dist/bootstrap-theme.min.css" />
 <link rel="stylesheet" href="DataTables/datatables.min.css" />
 
-<title>JSP PAGE</title>
+<title>Listar Usuário</title>
 
 <script type="text/javascript">
   function confirmarDesativacao(id,nome) {

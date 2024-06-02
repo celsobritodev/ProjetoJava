@@ -19,7 +19,7 @@
 	href="bootstrap-3.3.7/dist/bootstrap-theme.min.css" />
 <link rel="stylesheet" href="DataTables/datatables.min.css" />
 
-<title>JSP PAGE</title>
+<title>Listar Cliente</title>
 
 <script type="text/javascript">
   function confirmarExclusao(id,nome) {
@@ -86,13 +86,14 @@
 					</td>
 					<td><a class="btn btn-primary" href="gerenciar_cliente.do?acao=alterar&idCliente=${c.idCliente}"> 
 							<i class="glyphicon glyphicon-pencil"></i>
-					   </a>
-						<button class="btn-danger" onclick="confirmarExclusao(${c.idCliente},'${c.nomeRazao}')">
+					    </a>
+					    
+						 <button class="btn-danger" onclick="confirmarExclusao(${c.idCliente},'${c.nomeRazao}')">
 							<i class="glyphicon glyphicon-trash"></i>
-						</button>
+						 </button>
 						
 						<a href="form_venda.jsp?acao=novo&idCliente=${c.idCliente}" class="btn btn-primary">
-						<i class="glyphicon glyphicon">Realizar Venda</i>
+						    <i class="glyphicon glyphicon-shopping-cart"> Realizar Venda</i>
 						</a>
 						
 					</td>

@@ -15,7 +15,7 @@
 	name="viewport" />
 <link rel="stylesheet" href="bootstrap-3.3.7/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="bootstrap-3.3.7/dist/bootstrap-theme.min.css">
-<title>Insert title here</title>
+<title>Form Venda</title>
 </head>
 <body>
 	<div class="container-fluid">

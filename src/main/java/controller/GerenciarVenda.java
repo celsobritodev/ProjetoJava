@@ -34,7 +34,7 @@ public class GerenciarVenda extends HttpServlet {
 			HttpSession session = request.getSession();
 			String mensagem = "";
 			String acao = request.getParameter("acao");
-			if (acao.equals("incluir")) {
+			if (acao.equals("incluir")) { // passa aqui no botao "Confirmar Venda"
 				try {
 					Venda v = (Venda) session.getAttribute("venda");
 					VendaDAO vDAO = new VendaDAO();

@@ -7,7 +7,7 @@
 <meta content="width=device-width,initial-scale=1, maximum-scale=1, user=scalable=no" name="viewport"/>
 <link rel="stylesheet" href="bootstrap-3.3.7/dist/css/bootstrap.min.css"/>
 <link rel="stylesheet" href="bootstrap-3.3.7/dist/bootstrap-theme.min.css">
-<title>Insert title here</title>
+<title>Index</title>
 </head>
 <body>
  <div class="container">

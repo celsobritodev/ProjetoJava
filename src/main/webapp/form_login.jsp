@@ -8,7 +8,7 @@
 	name="viewport" />
 <link rel="stylesheet" href="bootstrap-3.3.7/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="bootstrap-3.3.7/dist/bootstrap-theme.min.css">
-<title>Login</title>
+<title>Form Login</title>
 </head>
 
 <body>

@@ -25,7 +25,7 @@
 
 
 </script>
-<title>Insert title here</title>
+<title>Form Finalizar Venda</title>
 </head>
 <body>
 	<div class="container-fluid">
@@ -93,6 +93,7 @@
 				%>
 
 			</tbody>
+
 
 		</table>
 
