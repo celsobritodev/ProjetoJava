@@ -16,29 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `produto`
+-- Table structure for table `perfil`
 --
 
-DROP TABLE IF EXISTS `produto`;
+DROP TABLE IF EXISTS `perfil`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `produto` (
-  `idProduto` int NOT NULL AUTO_INCREMENT,
+CREATE TABLE `perfil` (
+  `idPerfil` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(45) NOT NULL,
-  `qtd` int NOT NULL,
-  `valor` double NOT NULL,
-  PRIMARY KEY (`idProduto`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+  PRIMARY KEY (`idPerfil`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `produto`
+-- Dumping data for table `perfil`
 --
 
-LOCK TABLES `produto` WRITE;
-/*!40000 ALTER TABLE `produto` DISABLE KEYS */;
-INSERT INTO `produto` VALUES (2,'Arroz Tio João',10,18.99),(3,'Feijao Mossoró',5,17),(4,'Macarrao Lalabão',3,4.5);
-/*!40000 ALTER TABLE `produto` ENABLE KEYS */;
+LOCK TABLES `perfil` WRITE;
+/*!40000 ALTER TABLE `perfil` DISABLE KEYS */;
+INSERT INTO `perfil` VALUES (1,'Administrador'),(2,'Diretor'),(3,'Financeiro'),(4,'Vendas'),(5,'Expedição'),(6,'Produção');
+/*!40000 ALTER TABLE `perfil` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-02  9:17:54
+-- Dump completed on 2024-06-04 16:06:37

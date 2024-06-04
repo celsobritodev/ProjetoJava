@@ -16,33 +16,31 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `usuario`
+-- Table structure for table `cliente`
 --
 
-DROP TABLE IF EXISTS `usuario`;
+DROP TABLE IF EXISTS `cliente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `usuario` (
-  `idUsuario` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(100) NOT NULL,
-  `login` varchar(45) NOT NULL,
-  `senha` varchar(45) NOT NULL,
-  `status` int NOT NULL,
-  `idPerfil` int NOT NULL,
-  PRIMARY KEY (`idUsuario`),
-  KEY `fk_usuario_perfil1_idx` (`idPerfil`),
-  CONSTRAINT `fk_usuario_perfil1` FOREIGN KEY (`idPerfil`) REFERENCES `perfil` (`idPerfil`) ON DELETE RESTRICT ON UPDATE CASCADE
+CREATE TABLE `cliente` (
+  `idCliente` int NOT NULL AUTO_INCREMENT,
+  `nomeRazao` varchar(45) NOT NULL,
+  `cpfCnpj` varchar(45) NOT NULL,
+  `rgIe` varchar(45) NOT NULL,
+  `dataNascAbertura` date NOT NULL,
+  `tipo` int NOT NULL,
+  PRIMARY KEY (`idCliente`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `usuario`
+-- Dumping data for table `cliente`
 --
 
-LOCK TABLES `usuario` WRITE;
-/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'ana','ana','123',1,1),(2,'joao','joao','123',2,2),(3,'Priscila','pri','123',1,3),(4,'Maria','maria1','123',2,4),(5,'Saturnino','sat','123',1,5);
-/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+LOCK TABLES `cliente` WRITE;
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES (2,'celso','092.844.528-30','17.850.547','1966-11-03',1),(3,'Sandra','101880','172932','1973-07-09',1),(4,'Leticia','1232','2322','1997-01-23',1),(5,'Marina','334','746694','1994-04-05',1);
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -54,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-02  9:17:54
+-- Dump completed on 2024-06-04 16:06:38

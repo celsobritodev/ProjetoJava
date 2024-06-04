@@ -16,29 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `produto`
+-- Table structure for table `usuario`
 --
 
-DROP TABLE IF EXISTS `produto`;
+DROP TABLE IF EXISTS `usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `produto` (
-  `idProduto` int NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) NOT NULL,
-  `qtd` int NOT NULL,
-  `valor` double NOT NULL,
-  PRIMARY KEY (`idProduto`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `usuario` (
+  `idUsuario` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `login` varchar(45) NOT NULL,
+  `senha` varchar(45) NOT NULL,
+  `status` int NOT NULL,
+  `idPerfil` int NOT NULL,
+  PRIMARY KEY (`idUsuario`),
+  KEY `fk_usuario_perfil1_idx` (`idPerfil`),
+  CONSTRAINT `fk_usuario_perfil1` FOREIGN KEY (`idPerfil`) REFERENCES `perfil` (`idPerfil`) ON DELETE RESTRICT ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `produto`
+-- Dumping data for table `usuario`
 --
 
-LOCK TABLES `produto` WRITE;
-/*!40000 ALTER TABLE `produto` DISABLE KEYS */;
-INSERT INTO `produto` VALUES (2,'Arroz Tio João',10,18.99),(3,'Feijao Mossoró',5,17),(4,'Macarrao Lalabão',3,4.5);
-/*!40000 ALTER TABLE `produto` ENABLE KEYS */;
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (1,'ana','ana','123',1,1),(2,'joao','joao','123',2,2),(3,'Priscila','pri','123',1,3),(4,'Maria','maria1','123',2,4),(5,'Saturnino','sat','123',1,5);
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-31  8:44:02
+-- Dump completed on 2024-06-04 16:06:37

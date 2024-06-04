@@ -36,7 +36,7 @@
         		v.setCliente(c);
         		v.setVendedor(ulogado); // ulogado é do tipo Usuario
         		v.setCarrinho(new ArrayList<VendaProduto>());
-        		session.setAttribute("venda",v);
+        		session.setAttribute("venda",v); // grava a venda 'v' na sessao
         		
         	} else {
         		

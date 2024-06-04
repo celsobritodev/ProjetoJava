@@ -16,31 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `cliente`
+-- Table structure for table `produto`
 --
 
-DROP TABLE IF EXISTS `cliente`;
+DROP TABLE IF EXISTS `produto`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `cliente` (
-  `idCliente` int NOT NULL AUTO_INCREMENT,
-  `nomeRazao` varchar(45) NOT NULL,
-  `cpfCnpj` varchar(45) NOT NULL,
-  `rgIe` varchar(45) NOT NULL,
-  `dataNascAbertura` date NOT NULL,
-  `tipo` int NOT NULL,
-  PRIMARY KEY (`idCliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+CREATE TABLE `produto` (
+  `idProduto` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(45) NOT NULL,
+  `qtd` int NOT NULL,
+  `valor` double NOT NULL,
+  PRIMARY KEY (`idProduto`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `cliente`
+-- Dumping data for table `produto`
 --
 
-LOCK TABLES `cliente` WRITE;
-/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
-INSERT INTO `cliente` VALUES (2,'celso','092.844.528-30','17.850.547','1966-11-03',1),(3,'Sandra','101880','172932','1973-07-09',1),(4,'Leticia','1232','2322','1997-01-23',1),(5,'Marina','334','746694','1994-04-05',1);
-/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+LOCK TABLES `produto` WRITE;
+/*!40000 ALTER TABLE `produto` DISABLE KEYS */;
+INSERT INTO `produto` VALUES (2,'Arroz Tio João',10,18.99),(3,'Feijao Mossoró',5,17),(4,'Macarrao Lalabão',3,4.5);
+/*!40000 ALTER TABLE `produto` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-01 10:03:05
+-- Dump completed on 2024-06-04 16:06:36
